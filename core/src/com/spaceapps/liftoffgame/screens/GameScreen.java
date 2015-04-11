@@ -27,7 +27,14 @@ public class GameScreen extends ScreenAdapter {
   private final SpriteBatch spriteBatch;
   private final Game game;
   
-  private ButtonActor pauseButton;
+  private ButtonActor engineButton;
+  private ButtonActor cargoButton;
+  private ButtonActor fuelButton;
+  private ButtonActor crewButton;
+  private ButtonActor radarButton;
+  private ButtonActor platformButton;
+  private ButtonActor goButton;
+  private ButtonActor nogoButton;
   
   public GameScreen() {
     spriteBatch = LiftOffGame.getInstance().getSpriteBatch();
@@ -41,16 +48,93 @@ public class GameScreen extends ScreenAdapter {
   }
   
   public void createButtons() {
-    pauseButton = new ButtonActor(LiftOffGame.getInstance().resources.getNewSprite("button"));
-    pauseButton.setBounds(0, 0, 100, 100);
+    engineButton = new ButtonActor(LiftOffGame.getInstance().resources.getNewSprite("rock2"));
+    engineButton.setBounds(0, 0, 150, 100);
     
-    pauseButton.addListener(new ClickListener() {
+    engineButton.addListener(new ClickListener() {
       @Override
       public void clicked(InputEvent event, float x, float y) {
         System.out.println("What the hell!");
       }});
     
-    stage.addActor(pauseButton);
+    stage.addActor(engineButton);
+    
+    cargoButton = new ButtonActor(LiftOffGame.getInstance().resources.getNewSprite("rock2"));
+    cargoButton.setBounds(0, 100,150, 100);
+    
+    cargoButton.addListener(new ClickListener() {
+      @Override
+      public void clicked(InputEvent event, float x, float y) {
+        System.out.println("Hello!");
+      }});
+    
+    stage.addActor(cargoButton);
+    
+    fuelButton = new ButtonActor(LiftOffGame.getInstance().resources.getNewSprite("rock2"));
+    fuelButton.setBounds(0, 200, 150, 100);
+    
+    fuelButton.addListener(new ClickListener() {
+      @Override
+      public void clicked(InputEvent event, float x, float y) {
+        System.out.println("What's up!");
+      }});
+    
+    stage.addActor(fuelButton);
+    
+    crewButton = new ButtonActor(LiftOffGame.getInstance().resources.getNewSprite("rock2"));
+    crewButton.setBounds(0, 300, 150, 100);
+    
+    crewButton.addListener(new ClickListener() {
+      @Override
+      public void clicked(InputEvent event, float x, float y) {
+        System.out.println("Hi!");
+      }});
+    
+    stage.addActor(crewButton);
+    
+    radarButton = new ButtonActor(LiftOffGame.getInstance().resources.getNewSprite("rock2"));
+    radarButton.setBounds(0, 400, 150, 100);
+    
+    radarButton.addListener(new ClickListener() {
+      @Override
+      public void clicked(InputEvent event, float x, float y) {
+        System.out.println("Hey!");
+      }});
+    
+    stage.addActor(radarButton);
+    
+    platformButton = new ButtonActor(LiftOffGame.getInstance().resources.getNewSprite("rock2"));
+    platformButton.setBounds(0, 500, 150, 100);
+    
+    platformButton.addListener(new ClickListener() {
+      @Override
+      public void clicked(InputEvent event, float x, float y) {
+        System.out.println("Hei!");
+      }});
+    
+    stage.addActor(platformButton);
+    
+    goButton = new ButtonActor(LiftOffGame.getInstance().resources.getNewSprite("rock2"));
+    goButton.setBounds(874, 300, 150, 100);
+    
+    goButton.addListener(new ClickListener() {
+      @Override
+      public void clicked(InputEvent event, float x, float y) {
+        System.out.println("What the hell!");
+      }});
+    
+    stage.addActor(goButton);
+    
+    nogoButton = new ButtonActor(LiftOffGame.getInstance().resources.getNewSprite("rock2"));
+    nogoButton.setBounds(874, 200, 150, 100);
+    
+    nogoButton.addListener(new ClickListener() {
+      @Override
+      public void clicked(InputEvent event, float x, float y) {
+        System.out.println("What the hell!");
+      }});
+    
+    stage.addActor(nogoButton);
   }
 
   @Override
