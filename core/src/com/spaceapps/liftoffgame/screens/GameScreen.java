@@ -48,7 +48,7 @@ public class GameScreen extends ScreenAdapter {
   }
   
   public void createButtons() {
-    engineButton = new ButtonActor(LiftOffGame.getInstance().resources.getNewSprite("rock2"));
+    engineButton = new ButtonActor(LiftOffGame.getInstance().resources.getNewSprite("engine"));
     engineButton.setBounds(0, 0, 150, 100);
     
     engineButton.addListener(new ClickListener() {
@@ -59,7 +59,7 @@ public class GameScreen extends ScreenAdapter {
     
     stage.addActor(engineButton);
     
-    cargoButton = new ButtonActor(LiftOffGame.getInstance().resources.getNewSprite("rock2"));
+    cargoButton = new ButtonActor(LiftOffGame.getInstance().resources.getNewSprite("cargo"));
     cargoButton.setBounds(0, 100,150, 100);
     
     cargoButton.addListener(new ClickListener() {
@@ -70,7 +70,7 @@ public class GameScreen extends ScreenAdapter {
     
     stage.addActor(cargoButton);
     
-    fuelButton = new ButtonActor(LiftOffGame.getInstance().resources.getNewSprite("rock2"));
+    fuelButton = new ButtonActor(LiftOffGame.getInstance().resources.getNewSprite("fuel"));
     fuelButton.setBounds(0, 200, 150, 100);
     
     fuelButton.addListener(new ClickListener() {
@@ -81,7 +81,7 @@ public class GameScreen extends ScreenAdapter {
     
     stage.addActor(fuelButton);
     
-    crewButton = new ButtonActor(LiftOffGame.getInstance().resources.getNewSprite("rock2"));
+    crewButton = new ButtonActor(LiftOffGame.getInstance().resources.getNewSprite("astronaut"));
     crewButton.setBounds(0, 300, 150, 100);
     
     crewButton.addListener(new ClickListener() {
@@ -92,7 +92,7 @@ public class GameScreen extends ScreenAdapter {
     
     stage.addActor(crewButton);
     
-    radarButton = new ButtonActor(LiftOffGame.getInstance().resources.getNewSprite("rock2"));
+    radarButton = new ButtonActor(LiftOffGame.getInstance().resources.getNewSprite("radar"));
     radarButton.setBounds(0, 400, 150, 100);
     
     radarButton.addListener(new ClickListener() {
@@ -103,7 +103,7 @@ public class GameScreen extends ScreenAdapter {
     
     stage.addActor(radarButton);
     
-    platformButton = new ButtonActor(LiftOffGame.getInstance().resources.getNewSprite("rock2"));
+    platformButton = new ButtonActor(LiftOffGame.getInstance().resources.getNewSprite("platform_on"));
     platformButton.setBounds(0, 500, 150, 100);
     
     platformButton.addListener(new ClickListener() {
@@ -120,7 +120,7 @@ public class GameScreen extends ScreenAdapter {
     goButton.addListener(new ClickListener() {
       @Override
       public void clicked(InputEvent event, float x, float y) {
-        System.out.println("What the hell!");
+        System.out.println("GO!");
       }});
     
     stage.addActor(goButton);
@@ -131,7 +131,7 @@ public class GameScreen extends ScreenAdapter {
     nogoButton.addListener(new ClickListener() {
       @Override
       public void clicked(InputEvent event, float x, float y) {
-        System.out.println("What the hell!");
+        System.out.println("NO GO!");
       }});
     
     stage.addActor(nogoButton);
