@@ -15,6 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.spaceapps.liftoffgame.LiftOffGame;
 import com.spaceapps.liftoffgame.actors.ButtonActor;
+import com.spaceapps.liftoffgame.game.Game;
 
 /**
  *
@@ -24,6 +25,7 @@ public class GameScreen extends ScreenAdapter {
 
   private final Stage stage;
   private final SpriteBatch spriteBatch;
+  private final Game game;
   
   private ButtonActor pauseButton;
   
@@ -34,10 +36,12 @@ public class GameScreen extends ScreenAdapter {
     Gdx.input.setInputProcessor(stage);
     
     createButtons();
+    
+    game = new Game(stage);
   }
   
   public void createButtons() {
-    pauseButton = new ButtonActor(LiftOffGame.getInstance().resources.getNewSprite("rock2"));
+    pauseButton = new ButtonActor(LiftOffGame.getInstance().resources.getNewSprite("button"));
     pauseButton.setBounds(0, 0, 100, 100);
     
     pauseButton.addListener(new ClickListener() {
@@ -51,11 +55,13 @@ public class GameScreen extends ScreenAdapter {
 
   @Override
   public void render(float delta) {
-    Gdx.gl.glClearColor(0, 0, 0, 1);
+    Gdx.gl.glClearColor(1, 1, 0, 1);
     Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
     
     stage.act(delta);
     stage.draw();
+    game.act(delta);
+    game.draw(spriteBatch);
   }
   
 }

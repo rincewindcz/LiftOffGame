@@ -45,6 +45,7 @@ public class ButtonActor extends Actor {
   @Override
   public void setPosition(float x, float y) {
     super.setPosition(x, y);
+    super.setSize(image.getWidth(), image.getHeight());
     image.setPosition(x, y);
   }
   
