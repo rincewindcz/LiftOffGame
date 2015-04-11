@@ -1,0 +1,138 @@
+
+atlas.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+arrow
+  rotate: false
+  xy: 630, 442
+  size: 110, 64
+  orig: 110, 64
+  offset: 0, 0
+  index: -1
+button
+  rotate: false
+  xy: 2, 2
+  size: 120, 100
+  orig: 120, 100
+  offset: 0, 0
+  index: -1
+checkpoint
+  rotate: false
+  xy: 124, 12
+  size: 90, 90
+  orig: 90, 90
+  offset: 0, 0
+  index: -1
+cracks1
+  rotate: false
+  xy: 268, 52
+  size: 50, 50
+  orig: 50, 50
+  offset: 0, 0
+  index: -1
+cracks2
+  rotate: false
+  xy: 804, 456
+  size: 50, 50
+  orig: 50, 50
+  offset: 0, 0
+  index: -1
+cracks3
+  rotate: false
+  xy: 406, 108
+  size: 50, 50
+  orig: 50, 50
+  offset: 0, 0
+  index: -1
+crush
+  rotate: false
+  xy: 406, 222
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1
+exit
+  rotate: false
+  xy: 2, 306
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+glass
+  rotate: false
+  xy: 320, 52
+  size: 50, 50
+  orig: 50, 50
+  offset: 0, 0
+  index: -1
+ilusion
+  rotate: false
+  xy: 406, 284
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+pause
+  rotate: false
+  xy: 216, 32
+  size: 50, 70
+  orig: 50, 70
+  offset: 0, 0
+  index: -1
+piece
+  rotate: false
+  xy: 630, 415
+  size: 25, 25
+  orig: 25, 25
+  offset: 0, 0
+  index: -1
+powerlight
+  rotate: false
+  xy: 742, 446
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1
+rect
+  rotate: false
+  xy: 528, 406
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+repair
+  rotate: false
+  xy: 406, 160
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1
+rock1
+  rotate: false
+  xy: 2, 104
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+rock2
+  rotate: false
+  xy: 204, 306
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+rock3
+  rotate: false
+  xy: 204, 104
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+spike
+  rotate: false
+  xy: 406, 386
+  size: 120, 120
+  orig: 120, 120
+  offset: 0, 0
+  index: -1
