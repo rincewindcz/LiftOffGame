@@ -124,7 +124,7 @@ public class GameScreen extends ScreenAdapter {
     radarButton.addListener(new ClickListener() {
       @Override
       public void clicked(InputEvent event, float x, float y) {
-        addProgressBar("radar", 30, "Radar check in progress");
+        addProgressBar("radar", 2, "Radar check in progress");
       }});
     
     stage.addActor(radarButton);

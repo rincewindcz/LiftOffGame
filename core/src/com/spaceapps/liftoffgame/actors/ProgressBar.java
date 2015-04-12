@@ -52,7 +52,7 @@ public class ProgressBar extends Actor {
     
     icon.setPosition(getX() - (icon.getWidth() + 10f), getY());
     
-    rectangle.setPosition(icon.getX() - 15, icon.getY() - 10);
+    rectangle.setPosition(getX() - 120, getY() - 10);
     
     if(enabled) {
       if (value < duration)
