@@ -12,9 +12,11 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.actions.AlphaAction;
 import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
 import com.badlogic.gdx.scenes.scene2d.actions.RotateToAction;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -63,7 +65,10 @@ public class GameScreen extends ScreenAdapter {
     engineButton.addListener(new ClickListener() {
       @Override
       public void clicked(InputEvent event, float x, float y) {
-        System.out.println("What the hell!");
+        System.out.println("Engine!");
+        engineButton.setBlendColor(Color.BLUE);
+        
+        rocketEngineAnimation();
       }});
     
     stage.addActor(engineButton);
@@ -91,6 +96,8 @@ public class GameScreen extends ScreenAdapter {
       @Override
       public void clicked(InputEvent event, float x, float y) {
         System.out.println("What's up!");
+        
+        rocketTankFullAnimation();
       }});
     
     stage.addActor(fuelButton);
@@ -127,6 +134,8 @@ public class GameScreen extends ScreenAdapter {
       @Override
       public void clicked(InputEvent event, float x, float y) {
         System.out.println("Hei!");
+        
+        rocketPlatformOnAnimation();
       }});
     
     stage.addActor(platformButton);
@@ -141,6 +150,8 @@ public class GameScreen extends ScreenAdapter {
       @Override
       public void clicked(InputEvent event, float x, float y) {
         System.out.println("GO!");
+        
+        
       }});
     
     stage.addActor(goButton);
@@ -179,16 +190,44 @@ public class GameScreen extends ScreenAdapter {
     
   }
   
-  public void rocketCrashAnimation() {
-    MoveToAction action = Actions.action(MoveToAction.class);
+  public void rocketEngineAnimation(){
+      MoveToAction action = Actions.action(MoveToAction.class);
         action.setPosition(100, 100);
         action.setDuration(0.8f);
+        game.rocket.addAction(action);   
+        
+        RotateToAction action1 = Actions.action(RotateToAction.class);
+        action1.setRotation(90f);
+        action1.setDuration(0.2f);
+        game.rocket.addAction(action1);
+  }
+  
+  public void rocketCrashAnimation() {
+    MoveToAction action = Actions.action(MoveToAction.class);
+        action.setPosition(400, 0);
+        action.setDuration(1f);
         game.rocket.addAction(action);
         
         RotateToAction action2 = Actions.action(RotateToAction.class);
-        action2.setRotation(-90f);
-        action2.setDuration(0.2f);
+        action2.setRotation(-180f);
+        action2.setDuration(1f);
         game.rocket.addAction(action2);
   }
   
+  public void rocketTankFullAnimation(){
+      
+  }
+  
+  public void rocketPlatformOnAnimation(){
+      MoveToAction action = Actions.action(MoveToAction.class);
+        action.setPosition(-100, 100);
+        action.setDuration(1f);
+        game.platform.addAction(action);
+        
+        AlphaAction action6 = Actions.action(AlphaAction.class);
+       // action6.setRotation(90f);
+        action6.setColor(Color.CLEAR);
+        action6.setDuration(1f);
+        game.platform.addAction(action6);
+  }
 }

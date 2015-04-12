@@ -92,6 +92,7 @@ public class Resources {
     atlas = assetManager.get(GAME_ATLAS);
     backgroundTexture = assetManager.get(BACKGROUND);
     music = Gdx.audio.newMusic(Gdx.files.internal(MUSIC));
+    fontStandard = new BitmapFont();
 
     createSprites(RATIO);
     
