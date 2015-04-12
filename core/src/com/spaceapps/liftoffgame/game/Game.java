@@ -96,4 +96,9 @@ public class Game {
     timeLabel = "T- " + countdown; // TODO
   }
 
+  public void postponeStart(long i) {
+    countdown += i;
+    updateTimeLabel();
+  }
+
 }
