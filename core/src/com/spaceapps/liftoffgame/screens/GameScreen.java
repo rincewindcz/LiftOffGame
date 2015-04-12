@@ -70,9 +70,9 @@ public class GameScreen extends ScreenAdapter {
     engineButton.addListener(new ClickListener() {
       @Override
       public void clicked(InputEvent event, float x, float y) {
-        addProgressBar("engine", 30, "Launching engines");
+        addProgressBar("engine", 10, "Launching engines", ProgressBar.ActionEvent.EngineOn);
         engineButton.setBlendColor(Color.BLUE);
-        rocketEngineAnimation();
+        
       }});
     
     stage.addActor(engineButton);
@@ -84,10 +84,8 @@ public class GameScreen extends ScreenAdapter {
     cargoButton.addListener(new ClickListener() {
       @Override
       public void clicked(InputEvent event, float x, float y) {
-        addProgressBar("cargo", 30, "Loading cargo");
+        addProgressBar("cargo", 30, "Loading cargo", ProgressBar.ActionEvent.None);
         cargoButton.setBlendColor(Color.RED);
-        
-        rocketCrashAnimation();
       }});
     
     stage.addActor(cargoButton);
@@ -99,8 +97,9 @@ public class GameScreen extends ScreenAdapter {
     fuelButton.addListener(new ClickListener() {
       @Override
       public void clicked(InputEvent event, float x, float y) {
-        addProgressBar("fuel", 10f, "Fueling rocket");
+        addProgressBar("fuel", 15f, "Fueling rocket", ProgressBar.ActionEvent.None);
         rocketTankFullAnimation();
+        fuelButton.setBlendColor(Color.YELLOW);
       }});
     
     stage.addActor(fuelButton);
@@ -112,7 +111,8 @@ public class GameScreen extends ScreenAdapter {
     crewButton.addListener(new ClickListener() {
       @Override
       public void clicked(InputEvent event, float x, float y) {
-        addProgressBar("astronaut", 30, "Boarding of crew");
+        addProgressBar("astronaut", 30, "Boarding of crew", ProgressBar.ActionEvent.CrewIn);
+        crewButton.setBlendColor(Color.ORANGE);
       }});
     
     stage.addActor(crewButton);
@@ -124,7 +124,8 @@ public class GameScreen extends ScreenAdapter {
     radarButton.addListener(new ClickListener() {
       @Override
       public void clicked(InputEvent event, float x, float y) {
-        addProgressBar("radar", 2, "Radar check in progress");
+        addProgressBar("radar", 2, "Radar check in progress", ProgressBar.ActionEvent.None);
+        radarButton.setBlendColor(Color.GREEN);
       }});
     
     stage.addActor(radarButton);
@@ -136,8 +137,9 @@ public class GameScreen extends ScreenAdapter {
     platformButton.addListener(new ClickListener() {
       @Override
       public void clicked(InputEvent event, float x, float y) {
-        addProgressBar("platform_on", 30, "Platform");
+        addProgressBar("platform_on", 30, "Platform", ProgressBar.ActionEvent.PlatformOff);
         rocketPlatformOnAnimation();
+        platformButton.setBlendColor(Color.PURPLE);
       }});
     
     stage.addActor(platformButton);
@@ -175,6 +177,23 @@ public class GameScreen extends ScreenAdapter {
     for (Iterator<ProgressBar> it = progressBars.iterator(); it.hasNext();) {
       ProgressBar o = it.next();
       if (o.isFinished()) {
+        
+        switch(o.actionEvent) {
+          case CrewIn:
+            game.loadCrew();
+            break;
+          case EngineOn:
+            game.startEngines();
+            rocketEngineAnimation();
+            break;
+          case PlatformOff:
+            game.platformOff();
+            break;
+          case None:
+            default:
+              break;
+        }
+        
         it.remove();
         o.remove();
       }
@@ -185,10 +204,11 @@ public class GameScreen extends ScreenAdapter {
     }
   }
   
-  public void addProgressBar(String icon, float time, String label) {
+  public void addProgressBar(String icon, float time, String label, ProgressBar.ActionEvent aevent) {
     ProgressBar progressBar = new ProgressBar(LiftOffGame.getInstance().resources.getNewSprite(icon), time, label);
     progressBar.start();
     progressBar.setPosition(400, 110 * (progressBars.size()) + 25);
+    progressBar.actionEvent = aevent;
     stage.addActor(progressBar);
     progressBars.add(progressBar);
   }
@@ -215,14 +235,10 @@ public class GameScreen extends ScreenAdapter {
   
   public void rocketEngineAnimation(){
       MoveToAction action = Actions.action(MoveToAction.class);
-        action.setPosition(100, 100);
+        action.setPosition(game.rocket.getX(), 60);
+        action.setInterpolation(Interpolation.swingIn);
         action.setDuration(0.8f);
         game.rocket.addAction(action);   
-        
-        RotateToAction action1 = Actions.action(RotateToAction.class);
-        action1.setRotation(90f);
-        action1.setDuration(0.2f);
-        game.rocket.addAction(action1);
   }
   
   public void rocketCrashAnimation() {
