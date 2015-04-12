@@ -5,23 +5,72 @@ filter: Nearest,Nearest
 repeat: none
 astronaut
   rotate: false
-  xy: 458, 320
+  xy: 498, 23
   size: 54, 80
   orig: 54, 80
   offset: 0, 0
   index: -1
 button
   rotate: false
-  xy: 376, 402
+  xy: 376, 364
   size: 150, 100
   orig: 150, 100
   offset: 0, 0
   index: -1
+cargo
+  rotate: false
+  xy: 860, 422
+  size: 91, 80
+  orig: 91, 80
+  offset: 0, 0
+  index: -1
+cloud1
+  rotate: false
+  xy: 376, 89
+  size: 100, 82
+  orig: 100, 82
+  offset: 0, 0
+  index: -1
+cloud2
+  rotate: false
+  xy: 376, 15
+  size: 120, 72
+  orig: 120, 72
+  offset: 0, 0
+  index: -1
+cloud3
+  rotate: false
+  xy: 376, 275
+  size: 130, 87
+  orig: 130, 87
+  offset: 0, 0
+  index: -1
+engine
+  rotate: false
+  xy: 478, 105
+  size: 60, 80
+  orig: 60, 80
+  offset: 0, 0
+  index: -1
 fuel
   rotate: false
-  xy: 376, 320
+  xy: 657, 282
   size: 80, 80
   orig: 80, 80
+  offset: 0, 0
+  index: -1
+gotext
+  rotate: false
+  xy: 732, 383
+  size: 63, 50
+  orig: 63, 50
+  offset: 0, 0
+  index: -1
+nogotext
+  rotate: false
+  xy: 508, 312
+  size: 147, 50
+  orig: 147, 50
   offset: 0, 0
   index: -1
 platform
@@ -33,21 +82,28 @@ platform
   index: -1
 platform_off
   rotate: false
-  xy: 592, 416
+  xy: 478, 187
   size: 57, 86
   orig: 57, 86
   offset: 0, 0
   index: -1
 platform_on
   rotate: false
-  xy: 528, 416
-  size: 62, 86
-  orig: 62, 86
+  xy: 528, 364
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+progressbar
+  rotate: false
+  xy: 376, 466
+  size: 380, 36
+  orig: 380, 36
   offset: 0, 0
   index: -1
 radar
   rotate: false
-  xy: 376, 238
+  xy: 953, 422
   size: 65, 80
   orig: 65, 80
   offset: 0, 0
@@ -57,5 +113,26 @@ rocket
   xy: 2, 2
   size: 300, 500
   orig: 300, 500
+  offset: 0, 0
+  index: -1
+stormy
+  rotate: false
+  xy: 376, 173
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+sunny
+  rotate: false
+  xy: 630, 364
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+windy
+  rotate: false
+  xy: 758, 435
+  size: 100, 67
+  orig: 100, 67
   offset: 0, 0
   index: -1

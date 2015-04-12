@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package com.spaceapps.liftoff.weather;
+
 import java.util.Random;
 
 /**
@@ -11,39 +12,56 @@ import java.util.Random;
  * @author Ornela
  */
 public class Weather {
-    public enum State {
-      Normal, Wind, Storm
+  public enum State {
+    Normal, Wind, Storm
   };
-    private State state;
-    private Random random;
+  
+  private State state;
+  private final Random random;
 
-    public Weather() {
-        random = new Random();
+  public Weather() {
+    random = new Random();
+
+    if (percentageHit(0.5f)) {
+      state = State.Normal;
+    } else if (percentageHit(0.5f)) {
+      state = State.Wind;
+    } else {
+      state = State.Storm;
     }
-        
-    public void update (){
-      if (state==State.Normal){
-          if (percentageHit(0.5f))
-              state = State.Wind;
+  }
+
+  public void update() {
+    if (state == State.Normal) {
+      if (percentageHit(0.5f)) {
+        state = State.Wind;
       }
-      if (state==State.Wind){
-          if (percentageHit(0.33f))
-              state = State.Normal;
-          else if (percentageHit(0.33f))
-              state = State.Storm;
-          else 
-              state = State.Wind;
-      }
-          if (state==State.Storm){
-          if (percentageHit(0.5f))
-              state = State.Wind;
-          else if (percentageHit(0.4f))
-              state = State.Normal;
-          else 
-              state = State.Storm;
-      }          
     }
-        public boolean percentageHit(float probability) {
-        return random.nextFloat() <= probability;
-    }   
+    if (state == State.Wind) {
+      if (percentageHit(0.33f)) {
+        state = State.Normal;
+      } else if (percentageHit(0.33f)) {
+        state = State.Storm;
+      } else {
+        state = State.Wind;
+      }
+    }
+    if (state == State.Storm) {
+      if (percentageHit(0.5f)) {
+        state = State.Wind;
+      } else if (percentageHit(0.4f)) {
+        state = State.Normal;
+      } else {
+        state = State.Storm;
+      }
+    }
+  }
+
+  public State getState() {
+    return state;
+  }
+
+  private boolean percentageHit(float probability) {
+    return random.nextFloat() <= probability;
+  }
 }

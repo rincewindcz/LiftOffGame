@@ -5,6 +5,7 @@
  */
 package com.spaceapps.liftoffgame.actors;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -16,18 +17,35 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 public class ButtonActor extends Actor {
 
   private Sprite image;
+  private Sprite icon;
+  private Color blendColor;
 
   public ButtonActor(Sprite image) {
     this.image = image;
+    blendColor = Color.WHITE;
   }
 
   @Override
   public void draw(Batch batch, float alpha) {
+    image.setColor(blendColor);
     image.draw(batch);
+    if (icon != null) {
+      icon.draw(batch);
+    }
+      
   }
-  
+
+  public void setBlendColor(Color blendColor) {
+    this.blendColor = blendColor;
+  }
+
   public void setImage(Sprite image) {
     this.image = image;
+  }
+  
+  public void setIcon(Sprite image) {
+    this.icon = image;
+    icon.setPosition(getX() + getWidth()/2 - icon.getWidth()/2, getY() + getHeight()/2 - icon.getHeight()/2);
   }
   
   @Override
@@ -48,6 +66,8 @@ public class ButtonActor extends Actor {
     super.setSize(image.getWidth(), image.getHeight());
     image.setPosition(x, y);
   }
+  
+  
   
   
 }
