@@ -5,70 +5,98 @@ filter: Nearest,Nearest
 repeat: none
 astronaut
   rotate: false
-  xy: 630, 280
+  xy: 744, 216
   size: 54, 80
   orig: 54, 80
   offset: 0, 0
   index: -1
 button
   rotate: false
-  xy: 376, 364
+  xy: 740, 350
   size: 150, 100
   orig: 150, 100
   offset: 0, 0
   index: -1
 cargo
   rotate: false
-  xy: 537, 206
+  xy: 642, 282
   size: 91, 80
   orig: 91, 80
   offset: 0, 0
   index: -1
+cargowarn
+  rotate: false
+  xy: 510, 314
+  size: 126, 150
+  orig: 126, 150
+  offset: 0, 0
+  index: -1
 cloud1
   rotate: false
-  xy: 758, 420
+  xy: 642, 198
   size: 100, 82
   orig: 100, 82
   offset: 0, 0
   index: -1
 cloud2
   rotate: false
-  xy: 508, 288
+  xy: 892, 289
   size: 120, 72
   orig: 120, 72
   offset: 0, 0
   index: -1
 cloud3
   rotate: false
-  xy: 376, 275
+  xy: 892, 363
   size: 130, 87
   orig: 130, 87
   offset: 0, 0
   index: -1
+crewwarn
+  rotate: false
+  xy: 376, 314
+  size: 132, 150
+  orig: 132, 150
+  offset: 0, 0
+  index: -1
 engine
   rotate: false
-  xy: 962, 422
+  xy: 902, 125
   size: 60, 80
   orig: 60, 80
   offset: 0, 0
   index: -1
+fire
+  rotate: false
+  xy: 510, 189
+  size: 130, 123
+  orig: 130, 123
+  offset: 0, 0
+  index: -1
 fuel
   rotate: false
-  xy: 478, 105
+  xy: 800, 268
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: -1
+fuelwarn
+  rotate: false
+  xy: 376, 162
+  size: 132, 150
+  orig: 132, 150
+  offset: 0, 0
+  index: -1
 gotext
   rotate: false
-  xy: 677, 362
+  xy: 735, 298
   size: 63, 50
   orig: 63, 50
   offset: 0, 0
   index: -1
 nogotext
   rotate: false
-  xy: 528, 362
+  xy: 510, 137
   size: 147, 50
   orig: 147, 50
   offset: 0, 0
@@ -82,14 +110,14 @@ platform
   index: -1
 platform_off
   rotate: false
-  xy: 478, 187
+  xy: 708, 37
   size: 57, 86
   orig: 57, 86
   offset: 0, 0
   index: -1
 platform_on
   rotate: false
-  xy: 376, 173
+  xy: 638, 364
   size: 100, 100
   orig: 100, 100
   offset: 0, 0
@@ -103,14 +131,14 @@ progressbar
   index: -1
 radar
   rotate: false
-  xy: 478, 23
+  xy: 902, 207
   size: 65, 80
   orig: 65, 80
   offset: 0, 0
   index: -1
 rectangle
   rotate: false
-  xy: 528, 414
+  xy: 758, 452
   size: 200, 50
   orig: 200, 50
   offset: 0, 0
@@ -124,21 +152,28 @@ rocket
   index: -1
 stormy
   rotate: false
-  xy: 376, 71
+  xy: 504, 35
   size: 100, 100
   orig: 100, 100
   offset: 0, 0
   index: -1
 sunny
   rotate: false
-  xy: 860, 402
+  xy: 606, 35
   size: 100, 100
   orig: 100, 100
   offset: 0, 0
   index: -1
+weatherwarn
+  rotate: false
+  xy: 376, 17
+  size: 126, 143
+  orig: 126, 143
+  offset: 0, 0
+  index: -1
 windy
   rotate: false
-  xy: 376, 2
+  xy: 800, 199
   size: 100, 67
   orig: 100, 67
   offset: 0, 0

@@ -24,6 +24,9 @@ public class ProgressBar extends Actor {
   private boolean enabled = false;
   private final int defaultWidth;
   private final String text;
+  public enum ActionEvent {PlatformOff, EngineOn, None, CrewIn};
+  public ActionEvent actionEvent = ActionEvent.None;
+
 
   public ProgressBar(Sprite icon, float duration, String text) {
     bar = LiftOffGame.getInstance().resources.getNewSprite("progressbar");
