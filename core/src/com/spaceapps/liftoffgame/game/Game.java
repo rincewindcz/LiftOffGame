@@ -94,11 +94,28 @@ public class Game {
   }
 
   private void updateTimeLabel() {
-    timeLabel = "T- " + countdown; // TODO
+    
+    
+    long cnt = countdown;
+    long numHours = cnt/3600;
+    cnt -= numHours*3600;
+    
+    long numMinutes = cnt/60;
+    cnt -= numMinutes*60;
+    
+    long numSeconds = cnt;
+    cnt -= numSeconds;
+    
+    timeLabel = "T- " + numHours + ":"+ numMinutes+":"+ numSeconds;
   }
   
   public void drawTimeLabel(SpriteBatch batch) {
-      LiftOffGame.getInstance().resources.fontStandard.draw(batch, timeLabel, 750, 550);
+      LiftOffGame.getInstance().resources.fontStandard.draw(batch, timeLabel, 720, 580);
+  }
+
+  public void postponeStart(long i) {
+    countdown += i;
+    updateTimeLabel();
   }
 
 }

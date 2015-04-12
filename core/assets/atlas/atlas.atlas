@@ -5,7 +5,7 @@ filter: Nearest,Nearest
 repeat: none
 astronaut
   rotate: false
-  xy: 498, 23
+  xy: 630, 280
   size: 54, 80
   orig: 54, 80
   offset: 0, 0
@@ -19,21 +19,21 @@ button
   index: -1
 cargo
   rotate: false
-  xy: 860, 422
+  xy: 537, 206
   size: 91, 80
   orig: 91, 80
   offset: 0, 0
   index: -1
 cloud1
   rotate: false
-  xy: 376, 89
+  xy: 758, 420
   size: 100, 82
   orig: 100, 82
   offset: 0, 0
   index: -1
 cloud2
   rotate: false
-  xy: 376, 15
+  xy: 508, 288
   size: 120, 72
   orig: 120, 72
   offset: 0, 0
@@ -47,28 +47,28 @@ cloud3
   index: -1
 engine
   rotate: false
-  xy: 478, 105
+  xy: 962, 422
   size: 60, 80
   orig: 60, 80
   offset: 0, 0
   index: -1
 fuel
   rotate: false
-  xy: 657, 282
+  xy: 478, 105
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: -1
 gotext
   rotate: false
-  xy: 732, 383
+  xy: 677, 362
   size: 63, 50
   orig: 63, 50
   offset: 0, 0
   index: -1
 nogotext
   rotate: false
-  xy: 508, 312
+  xy: 528, 362
   size: 147, 50
   orig: 147, 50
   offset: 0, 0
@@ -89,7 +89,7 @@ platform_off
   index: -1
 platform_on
   rotate: false
-  xy: 528, 364
+  xy: 376, 173
   size: 100, 100
   orig: 100, 100
   offset: 0, 0
@@ -103,9 +103,16 @@ progressbar
   index: -1
 radar
   rotate: false
-  xy: 953, 422
+  xy: 478, 23
   size: 65, 80
   orig: 65, 80
+  offset: 0, 0
+  index: -1
+rectangle
+  rotate: false
+  xy: 528, 414
+  size: 200, 50
+  orig: 200, 50
   offset: 0, 0
   index: -1
 rocket
@@ -117,21 +124,21 @@ rocket
   index: -1
 stormy
   rotate: false
-  xy: 376, 173
+  xy: 376, 71
   size: 100, 100
   orig: 100, 100
   offset: 0, 0
   index: -1
 sunny
   rotate: false
-  xy: 630, 364
+  xy: 860, 402
   size: 100, 100
   orig: 100, 100
   offset: 0, 0
   index: -1
 windy
   rotate: false
-  xy: 758, 435
+  xy: 376, 2
   size: 100, 67
   orig: 100, 67
   offset: 0, 0

@@ -23,7 +23,10 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.spaceapps.liftoffgame.LiftOffGame;
 import com.spaceapps.liftoffgame.actors.ButtonActor;
+import com.spaceapps.liftoffgame.actors.ProgressBar;
 import com.spaceapps.liftoffgame.game.Game;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
@@ -45,6 +48,8 @@ public class GameScreen extends ScreenAdapter {
   private ButtonActor goButton;
   private ButtonActor nogoButton;
   
+  private final ArrayList<ProgressBar> progressBars = new ArrayList<ProgressBar>(8);
+  
   public GameScreen() {
     spriteBatch = LiftOffGame.getInstance().getSpriteBatch();
     stage = new Stage(new StretchViewport(1024, 600), spriteBatch);
@@ -65,9 +70,8 @@ public class GameScreen extends ScreenAdapter {
     engineButton.addListener(new ClickListener() {
       @Override
       public void clicked(InputEvent event, float x, float y) {
-        System.out.println("Engine!");
+        addProgressBar("engine", 30, "Launching engines");
         engineButton.setBlendColor(Color.BLUE);
-        
         rocketEngineAnimation();
         LiftOffGame.getInstance().resources.playSound(1);
       }});
@@ -81,7 +85,7 @@ public class GameScreen extends ScreenAdapter {
     cargoButton.addListener(new ClickListener() {
       @Override
       public void clicked(InputEvent event, float x, float y) {
-        System.out.println("Hello!");
+        addProgressBar("cargo", 30, "Loading cargo");
         cargoButton.setBlendColor(Color.RED);
         
         rocketCrashAnimation();
@@ -97,8 +101,7 @@ public class GameScreen extends ScreenAdapter {
     fuelButton.addListener(new ClickListener() {
       @Override
       public void clicked(InputEvent event, float x, float y) {
-        System.out.println("What's up!");
-        
+        addProgressBar("fuel", 10f, "Fueling rocket");
         rocketTankFullAnimation();
         LiftOffGame.getInstance().resources.playSound(1);
       }});
@@ -112,10 +115,7 @@ public class GameScreen extends ScreenAdapter {
     crewButton.addListener(new ClickListener() {
       @Override
       public void clicked(InputEvent event, float x, float y) {
-        System.out.println("Hi!");
-        
-        
-        LiftOffGame.getInstance().resources.playSound(1);
+        addProgressBar("astronaut", 30, "Boarding of crew");
       }});
     
     stage.addActor(crewButton);
@@ -127,9 +127,10 @@ public class GameScreen extends ScreenAdapter {
     radarButton.addListener(new ClickListener() {
       @Override
       public void clicked(InputEvent event, float x, float y) {
-        System.out.println("Hey!");
-        
+
         LiftOffGame.getInstance().resources.playSound(1);
+
+        addProgressBar("radar", 2, "Radar check in progress");
       }});
     
     stage.addActor(radarButton);
@@ -141,8 +142,7 @@ public class GameScreen extends ScreenAdapter {
     platformButton.addListener(new ClickListener() {
       @Override
       public void clicked(InputEvent event, float x, float y) {
-        System.out.println("Hei!");
-        
+        addProgressBar("platform_on", 30, "Platform");
         rocketPlatformOnAnimation();
         LiftOffGame.getInstance().resources.playSound(1);
       }});
@@ -158,11 +158,11 @@ public class GameScreen extends ScreenAdapter {
     goButton.addListener(new ClickListener() {
       @Override
       public void clicked(InputEvent event, float x, float y) {
-        System.out.println("GO!");
         
         LiftOffGame.getInstance().resources.playSound(3);
         LiftOffGame.getInstance().resources.playSound(4);
         
+
         
       }});
     
@@ -177,12 +177,36 @@ public class GameScreen extends ScreenAdapter {
     nogoButton.addListener(new ClickListener() {
       @Override
       public void clicked(InputEvent event, float x, float y) {
-        System.out.println("NO GO!");
-        
+
         LiftOffGame.getInstance().resources.playSound(5);
+
+        game.postponeStart(1200);
+
       }});
     
     stage.addActor(nogoButton);
+  }
+  
+  private void checkProgressBars() {
+    for (Iterator<ProgressBar> it = progressBars.iterator(); it.hasNext();) {
+      ProgressBar o = it.next();
+      if (o.isFinished()) {
+        it.remove();
+        o.remove();
+      }
+    }
+    
+    for (int i = 0; i < progressBars.size(); i++) {
+      progressBars.get(i).setPosition(400, 110 * i + 25);
+    }
+  }
+  
+  public void addProgressBar(String icon, float time, String label) {
+    ProgressBar progressBar = new ProgressBar(LiftOffGame.getInstance().resources.getNewSprite(icon), time, label);
+    progressBar.start();
+    progressBar.setPosition(400, 110 * (progressBars.size()) + 25);
+    stage.addActor(progressBar);
+    progressBars.add(progressBar);
   }
 
   @Override
@@ -192,6 +216,7 @@ public class GameScreen extends ScreenAdapter {
     
     game.act(delta);
     stage.act(delta);
+    checkProgressBars();
     
     spriteBatch.begin();
     
