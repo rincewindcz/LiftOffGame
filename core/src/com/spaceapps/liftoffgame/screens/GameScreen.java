@@ -38,6 +38,8 @@ public class GameScreen extends ScreenAdapter {
   private final SpriteBatch spriteBatch;
   private final Game game;
   private final Texture backgroundTexture;
+  private float bgY = 0;
+  private float bgColor = 1;
   
   private ButtonActor engineButton;
   private ButtonActor cargoButton;
@@ -70,7 +72,7 @@ public class GameScreen extends ScreenAdapter {
     engineButton.addListener(new ClickListener() {
       @Override
       public void clicked(InputEvent event, float x, float y) {
-        addProgressBar("engine", 10, "Launching engines", ProgressBar.ActionEvent.EngineOn);
+        addProgressBar("engine", 10, "Starting engines", ProgressBar.ActionEvent.EngineOn);
         engineButton.setBlendColor(Color.BLUE);
         LiftOffGame.getInstance().resources.playSound(1);
       }});
@@ -84,9 +86,10 @@ public class GameScreen extends ScreenAdapter {
     cargoButton.addListener(new ClickListener() {
       @Override
       public void clicked(InputEvent event, float x, float y) {
-        addProgressBar("cargo", 30, "Loading cargo", ProgressBar.ActionEvent.None);
+        addProgressBar("cargo", 6, "Loading cargo", ProgressBar.ActionEvent.None);
         cargoButton.setBlendColor(Color.RED);
         LiftOffGame.getInstance().resources.playSound(1);
+        game.loadCargo();
       }});
     
     stage.addActor(cargoButton);
@@ -102,6 +105,7 @@ public class GameScreen extends ScreenAdapter {
         rocketTankFullAnimation();
         fuelButton.setBlendColor(Color.YELLOW);
         LiftOffGame.getInstance().resources.playSound(1);
+        game.tankFuel();
       }});
     
     stage.addActor(fuelButton);
@@ -113,9 +117,10 @@ public class GameScreen extends ScreenAdapter {
     crewButton.addListener(new ClickListener() {
       @Override
       public void clicked(InputEvent event, float x, float y) {
-        addProgressBar("astronaut", 30, "Boarding of crew", ProgressBar.ActionEvent.CrewIn);
+        addProgressBar("astronaut", 12, "Boarding of crew", ProgressBar.ActionEvent.CrewIn);
         crewButton.setBlendColor(Color.ORANGE);
         LiftOffGame.getInstance().resources.playSound(1);
+        game.loadCrew();
       }});
     
     stage.addActor(crewButton);
@@ -131,6 +136,7 @@ public class GameScreen extends ScreenAdapter {
         addProgressBar("radar", 2, "Radar check in progress", ProgressBar.ActionEvent.None);
         radarButton.setBlendColor(Color.GREEN);
         LiftOffGame.getInstance().resources.playSound(1);
+        
       }});
     
     stage.addActor(radarButton);
@@ -142,8 +148,7 @@ public class GameScreen extends ScreenAdapter {
     platformButton.addListener(new ClickListener() {
       @Override
       public void clicked(InputEvent event, float x, float y) {
-        addProgressBar("platform_on", 30, "Platform", ProgressBar.ActionEvent.PlatformOff);
-        rocketPlatformOnAnimation();
+        addProgressBar("platform_on", 10, "Platform", ProgressBar.ActionEvent.PlatformOff);
         platformButton.setBlendColor(Color.PURPLE);
         LiftOffGame.getInstance().resources.playSound(1);
       }});
@@ -161,6 +166,14 @@ public class GameScreen extends ScreenAdapter {
       public void clicked(InputEvent event, float x, float y) {
         LiftOffGame.getInstance().resources.playSound(3);
         LiftOffGame.getInstance().resources.playSound(4);
+        
+        Game.EndGameStory s = game.checkConditionsEndGame();
+        if (s != Game.EndGameStory.None) {
+          System.out.println("Failure: " + s.toString());
+          rocketCrashAnimation();
+        }
+        else
+          game.launchRocket();
       }});
     
     stage.addActor(goButton);
@@ -175,7 +188,7 @@ public class GameScreen extends ScreenAdapter {
       @Override
       public void clicked(InputEvent event, float x, float y) {
         LiftOffGame.getInstance().resources.playSound(5);
-        game.postponeStart(1200);
+        game.postponeStart(30);
 
       }});
     
@@ -197,6 +210,7 @@ public class GameScreen extends ScreenAdapter {
             break;
           case PlatformOff:
             game.platformOff();
+            rocketPlatformOnAnimation();
             break;
           case None:
             default:
@@ -224,7 +238,7 @@ public class GameScreen extends ScreenAdapter {
 
   @Override
   public void render(float delta) {
-    Gdx.gl.glClearColor(1, 1, 1, 1);
+    Gdx.gl.glClearColor(bgColor, bgColor, bgColor, 1);
     Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
     
     game.act(delta);
@@ -232,8 +246,8 @@ public class GameScreen extends ScreenAdapter {
     checkProgressBars();
     
     spriteBatch.begin();
-    
-    spriteBatch.draw(backgroundTexture, 0, 0);
+    flyingAnimation(delta);
+    spriteBatch.draw(backgroundTexture, 0, bgY);
     game.draw(spriteBatch);
     
     spriteBatch.end();
@@ -277,5 +291,21 @@ public class GameScreen extends ScreenAdapter {
         action6.setColor(Color.CLEAR);
         action6.setDuration(1f);
         game.platform.addAction(action6);
+  }
+  
+  public void flyingAnimation(float delta) {
+    if (game.isInAir()) {
+      
+      if (bgY < -400f) {
+        if (bgColor > 0f)
+          bgColor -= delta*0.5f;
+      }
+      else {
+        if (bgY < -1f)
+          bgY -= -delta*bgY*3;
+        else
+          bgY -= delta*10;
+      }
+    }
   }
 }

@@ -20,8 +20,8 @@ import java.util.Random;
  */
 public class Game {
 
-  public static final long DEFAULT_COUNTDOWN = 154800;
-  public static final long COUNTDOWN_RATE = 100;
+  public static final long DEFAULT_COUNTDOWN = 100;
+  public static final long COUNTDOWN_RATE = 1;
   
   public static final int ROCKET_X = 420;
   public static final int ROCKET_Y = 60;
@@ -60,6 +60,8 @@ public class Game {
   float radarCheck = -1f;
   boolean cargoLoaded = false;
   boolean platformOn = true;
+  boolean inAir = false;
+  float weatherChange = 8f;
 
   public Game(Stage stage) {
     this.stage = stage;
@@ -118,9 +120,12 @@ public class Game {
     }
       drawTimeLabel(batch);
 
-      cargowarn.draw(batch);
-      crewwarn.draw(batch);
-      fuelwarn.draw(batch);
+      if (!cargoLoaded)
+        cargowarn.draw(batch);
+      if (crewInside <= 0f)
+        crewwarn.draw(batch);
+      if (fuelInTank <= 0)
+        fuelwarn.draw(batch);
   }
 
   public void act(float delta) {
@@ -140,6 +145,13 @@ public class Game {
     }
     
     engineFire.setPosition(rocket.getX()+95, rocket.getY()+10);
+    
+    
+    weatherChange -= delta;
+    if (weatherChange < 0f) {
+      weather.update();
+      weatherChange = (random.nextFloat() + 4f) * 4f;
+    }
   }
 
   private void updateTimeLabel() {
@@ -155,7 +167,12 @@ public class Game {
     long numSeconds = cnt;
     cnt -= numSeconds;
     
-    timeLabel = "T- " + numHours + ":"+ numMinutes+":"+ numSeconds;
+    
+    String hh = (numHours < 10) ? ("0" + String.valueOf(numHours)) : String.valueOf(numHours);
+    String mm = (numMinutes < 10) ? ("0" + String.valueOf(numMinutes)) : String.valueOf(numMinutes);
+    String ss = (numSeconds < 10) ? ("0" + String.valueOf(numSeconds)) : String.valueOf(numSeconds);
+    
+    timeLabel = "T- " + hh + ":"+ mm+":"+ ss;
   }
   
   public void drawTimeLabel(SpriteBatch batch) {
@@ -199,10 +216,10 @@ public class Game {
   }
   
   public EndGameStory checkConditionsEndGame () {
-    
+    /*
     if (platformOn) {
       return EndGameStory.Platform;
-    }
+    }*/
     
     if (fuelInTank == 0) {
       return EndGameStory.NoFuel;
@@ -211,27 +228,35 @@ public class Game {
     if (weather.getState() == Weather.State.Storm) {
       return EndGameStory.Weather;
     }
-    
+    /*
     if (weather.getState() == Weather.State.Wind) {
       if (percentageHit(33))
         return EndGameStory.Weather;
-    }
-    
+    }*/
+    /*
     if (fuelInTank > 3) {
       return EndGameStory.TooMuchFuel;
-    }
-    
+    }*/
+    /*
     if (radarCheck < 0f) {
       if (percentageHit(60))
         return EndGameStory.AirplaneOk;
       else 
         return EndGameStory.AirplaneCrash;
-    }
+    }*/
     
     return EndGameStory.None;
   }
   
   private boolean percentageHit(float probability) {
     return random.nextFloat() <= probability;
+  }
+  
+  public void launchRocket() {
+    inAir = true;
+  }
+  
+  public boolean isInAir() {
+    return inAir;
   }
 }
