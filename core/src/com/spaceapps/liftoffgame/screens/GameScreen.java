@@ -69,6 +69,7 @@ public class GameScreen extends ScreenAdapter {
         engineButton.setBlendColor(Color.BLUE);
         
         rocketEngineAnimation();
+        LiftOffGame.getInstance().resources.playSound(1);
       }});
     
     stage.addActor(engineButton);
@@ -84,6 +85,7 @@ public class GameScreen extends ScreenAdapter {
         cargoButton.setBlendColor(Color.RED);
         
         rocketCrashAnimation();
+        LiftOffGame.getInstance().resources.playSound(1);
       }});
     
     stage.addActor(cargoButton);
@@ -98,6 +100,7 @@ public class GameScreen extends ScreenAdapter {
         System.out.println("What's up!");
         
         rocketTankFullAnimation();
+        LiftOffGame.getInstance().resources.playSound(1);
       }});
     
     stage.addActor(fuelButton);
@@ -110,6 +113,9 @@ public class GameScreen extends ScreenAdapter {
       @Override
       public void clicked(InputEvent event, float x, float y) {
         System.out.println("Hi!");
+        
+        
+        LiftOffGame.getInstance().resources.playSound(1);
       }});
     
     stage.addActor(crewButton);
@@ -122,6 +128,8 @@ public class GameScreen extends ScreenAdapter {
       @Override
       public void clicked(InputEvent event, float x, float y) {
         System.out.println("Hey!");
+        
+        LiftOffGame.getInstance().resources.playSound(1);
       }});
     
     stage.addActor(radarButton);
@@ -136,6 +144,7 @@ public class GameScreen extends ScreenAdapter {
         System.out.println("Hei!");
         
         rocketPlatformOnAnimation();
+        LiftOffGame.getInstance().resources.playSound(1);
       }});
     
     stage.addActor(platformButton);
@@ -150,6 +159,9 @@ public class GameScreen extends ScreenAdapter {
       @Override
       public void clicked(InputEvent event, float x, float y) {
         System.out.println("GO!");
+        
+        LiftOffGame.getInstance().resources.playSound(3);
+        LiftOffGame.getInstance().resources.playSound(4);
         
         
       }});
@@ -166,6 +178,8 @@ public class GameScreen extends ScreenAdapter {
       @Override
       public void clicked(InputEvent event, float x, float y) {
         System.out.println("NO GO!");
+        
+        LiftOffGame.getInstance().resources.playSound(5);
       }});
     
     stage.addActor(nogoButton);
@@ -192,19 +206,20 @@ public class GameScreen extends ScreenAdapter {
   
   public void rocketEngineAnimation(){
       MoveToAction action = Actions.action(MoveToAction.class);
-        action.setPosition(100, 100);
-        action.setDuration(0.8f);
-        game.rocket.addAction(action);   
+        action.setPosition(420, 50);
+        action.setDuration(1f);
+        game.rocket.addAction(action);  
         
-        RotateToAction action1 = Actions.action(RotateToAction.class);
-        action1.setRotation(90f);
-        action1.setDuration(0.2f);
-        game.rocket.addAction(action1);
+        
+//        MoveToAction action1 = Actions.action(MoveToAction.class);
+//        action1.setPosition(400,500);
+//        action1.setDuration(1f);
+//        game.rocket.addAction(action1);
   }
   
   public void rocketCrashAnimation() {
     MoveToAction action = Actions.action(MoveToAction.class);
-        action.setPosition(400, 0);
+        action.setPosition(420, 0);
         action.setDuration(1f);
         game.rocket.addAction(action);
         

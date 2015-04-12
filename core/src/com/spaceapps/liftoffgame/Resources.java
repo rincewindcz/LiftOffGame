@@ -96,7 +96,7 @@ public class Resources {
 
     createSprites(RATIO);
     
-    //loadSounds(5);
+    loadSounds(6);
 
     LiftOffGame.logInfo("Loading assets done!");
   }

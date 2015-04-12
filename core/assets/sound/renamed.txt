@@ -1,0 +1,6 @@
+background 			- sound0
+button action 			- sound1
+countdown 			- sound2
+launch 				- sound3
+succesful liftoff 		- sound4
+"Houston we have a problem" 	- sound5
