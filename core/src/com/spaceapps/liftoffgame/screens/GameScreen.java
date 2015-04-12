@@ -14,6 +14,9 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
+import com.badlogic.gdx.scenes.scene2d.actions.RotateToAction;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.spaceapps.liftoffgame.LiftOffGame;
@@ -74,6 +77,8 @@ public class GameScreen extends ScreenAdapter {
       public void clicked(InputEvent event, float x, float y) {
         System.out.println("Hello!");
         cargoButton.setBlendColor(Color.RED);
+        
+        rocketCrashAnimation();
       }});
     
     stage.addActor(cargoButton);
@@ -172,6 +177,18 @@ public class GameScreen extends ScreenAdapter {
     
     stage.draw();
     
+  }
+  
+  public void rocketCrashAnimation() {
+    MoveToAction action = Actions.action(MoveToAction.class);
+        action.setPosition(100, 100);
+        action.setDuration(0.8f);
+        game.rocket.addAction(action);
+        
+        RotateToAction action2 = Actions.action(RotateToAction.class);
+        action2.setRotation(-90f);
+        action2.setDuration(0.2f);
+        game.rocket.addAction(action2);
   }
   
 }

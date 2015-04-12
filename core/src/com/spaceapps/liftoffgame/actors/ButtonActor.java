@@ -66,8 +66,12 @@ public class ButtonActor extends Actor {
     super.setSize(image.getWidth(), image.getHeight());
     image.setPosition(x, y);
   }
-  
-  
-  
-  
+
+  @Override
+  public void act(float delta) {
+    super.act(delta);
+    image.setPosition(getX(), getY());
+    image.setRotation(getRotation());
+  }
+
 }
