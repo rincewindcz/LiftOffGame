@@ -39,7 +39,7 @@ public class Game {
   private long countdown;
   private boolean countdownRunning = true;
   private float timer = 0f;
-  public String timeLabel;
+  public String timeLabel = "";
 
   public Game(Stage stage) {
     this.stage = stage;
@@ -78,6 +78,7 @@ public class Game {
         windySprite.draw(batch);
         break;
     }
+      drawTimeLabel(batch);
   }
 
   public void act(float delta) {
@@ -94,6 +95,10 @@ public class Game {
 
   private void updateTimeLabel() {
     timeLabel = "T- " + countdown; // TODO
+  }
+  
+  public void drawTimeLabel(SpriteBatch batch) {
+      LiftOffGame.getInstance().resources.fontStandard.draw(batch, timeLabel, 720, 580);
   }
 
   public void postponeStart(long i) {

@@ -68,7 +68,7 @@ public class ProgressBar extends Actor {
     rectangle.draw(batch);
     bar.draw(batch);
     icon.draw(batch);
-    LiftOffGame.getInstance().resources.fontStandard.draw(batch, text, bar.getX(), bar.getY() + 30);
+    LiftOffGame.getInstance().resources.fontStandard.draw(batch, text, bar.getX(), bar.getY() + 100);
   }
 
   public float getDuration() {

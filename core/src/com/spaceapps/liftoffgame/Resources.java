@@ -80,7 +80,7 @@ public class Resources {
   private void loadSounds(int number) {
     sounds = new Sound[number];
     for (int i =0; i < number; i++) {
-      sounds[i] = Gdx.audio.newSound(Gdx.files.internal("sound/sound" + i + ".wav"));
+      sounds[i] = Gdx.audio.newSound(Gdx.files.internal("sound/sound" + i + ".ogg"));
     }
   }
   
@@ -92,6 +92,7 @@ public class Resources {
     atlas = assetManager.get(GAME_ATLAS);
     backgroundTexture = assetManager.get(BACKGROUND);
     music = Gdx.audio.newMusic(Gdx.files.internal(MUSIC));
+    loadFont();
 
     createSprites(RATIO);
     

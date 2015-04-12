@@ -72,6 +72,7 @@ public class ButtonActor extends Actor {
     super.act(delta);
     image.setPosition(getX(), getY());
     image.setRotation(getRotation());
+    image.setColor(getColor());
   }
 
 }
